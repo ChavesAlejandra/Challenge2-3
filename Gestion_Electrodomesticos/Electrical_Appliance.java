@@ -39,7 +39,7 @@ public class ElectricalAppliance {
     private final static char ENERGY_DEFAULT = 'F';
     private final static double WEIGHT_DEFAULT = 5;
 
-    //constructor
+    //constructores
     public ElectricalAppliance(double pPrice, String pColor, char pEnergy, double pWeight) {
         _price = pPrice;
         _color = pColor;
@@ -47,12 +47,21 @@ public class ElectricalAppliance {
         _weight = pWeight;
     }
 
-    //constructor por defecto
     public ElectricalAppliance () {
         _price = PRICE_DEFAULT;
         _color = COLOR_DEFAULT;
         _energy = ENERGY_DEFAULT;
         _weight = WEIGHT_DEFAULT;
     }
+
+        public ElectricalAppliance (double pPrice, double pWeight ) {
+        _price = pPrice;
+        _color = COLOR_DEFAULT;
+        _energy = ENERGY_DEFAULT;
+        _weight = pWeight;
+
+    }
+
+    String [] arrColors = {"white", "black","red", "blue", "grey"};
 
 }
