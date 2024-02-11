@@ -37,7 +37,6 @@ public class Electrical_Appliance {
     private final static double PRICE_DEFAULT = 100;
     private final static String COLOR_DEFAULT = "blanco";
     private final static char ENERGY_DEFAULT = 'F';
-
     private final static double WEIGHT_DAFAULT = 5;
 
     //constructor
@@ -53,7 +52,7 @@ public class Electrical_Appliance {
         this._price = PRICE_DEFAULT;
         this._color = COLOR_DEFAULT;
         this._energy = ENERGY_DEFAULT;
-        this._weight = WEIGHT_DAFAULT;
+        this._weight = WEIGHT_DEFAULT;
     }
 
 }
