@@ -40,7 +40,7 @@ public class ElectricalAppliance {
     private final static double WEIGHT_DEFAULT = 5;
 
     //constructor
-    public Electrical_Appliance(double pPrice, String pColor, char pEnergy, double pWeight) {
+    public ElectricalAppliance(double pPrice, String pColor, char pEnergy, double pWeight) {
         _price = pPrice;
         _color = pColor;
         _energy = pEnergy;
@@ -48,7 +48,7 @@ public class ElectricalAppliance {
     }
 
     //constructor por defecto
-    public Electrical_Appliance () {
+    public ElectricalAppliance () {
         _price = PRICE_DEFAULT;
         _color = COLOR_DEFAULT;
         _energy = ENERGY_DEFAULT;
