@@ -37,7 +37,7 @@ public class Electrical_Appliance {
     private final static double PRICE_DEFAULT = 100;
     private final static String COLOR_DEFAULT = "blanco";
     private final static char ENERGY_DEFAULT = 'F';
-    private final static double WEIGHT_DAFAULT = 5;
+    private final static double WEIGHT_DEFAULT = 5;
 
     //constructor
     public Electrical_Appliance(double pPrice, String pColor, char pEnergy, double pWeight) {
