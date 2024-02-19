@@ -1,74 +1,93 @@
-package GestionElectrodomesticos;
+package Challenge2.Gestion_Electrodomesticos;
+
 public class ElectricalAppliance {
-    private final static String[] COLORS = {"white", "black", "red", "blue", "grey"};
-    private final static char[] LETTERS = {'A', 'B', 'C', 'D', 'E', 'F'};
-    private final static double PRICE_DEFAULT = 100;
+    private final static String[] COLORS = {"white", "black","red", "blue", "grey"};
+    private final static char[] LETTERS = {'A', 'B', 'C',  'D', 'E', 'F'};
+
+    private final static double PRICE_DEFAULT = 100; // in €
     private final static String COLOR_DEFAULT = "blanco";
     private final static char ENERGY_DEFAULT = 'F';
-    private final static double WEIGHT_DEFAULT = 5;
-    private double _price;
+    private final static double WEIGHT_DEFAULT = 5; // in kg
 
+    private double _price;
+    protected void setPrice (double pPrice) {
+        _price = pPrice;
+    }
     public double getPrice() {
         return _price;
     }
 
-    private void setPrice(double pPrice) {
-        _price = pPrice;
+    private String _color;
+    private void setColor (String pColor) {
+        _color = pColor;
     }
-
     public String getColor() {
         return _color;
     }
 
-    private String _color;
-
-    private void setColor(String pColor) {
-        _color = pColor;
-    }
-
     private char _energy;
-
+    private void setEnergy (char pEnergy) {
+        _energy = pEnergy;
+    }
     public char getEnergy() {
         return _energy;
     }
 
-    private void setEnergy(char pEnergy) {
-        _energy = pEnergy;
-    }
-
     private double _weight;
-
+    private void setWeight (double pWeight) {
+        _weight = pWeight;
+    }
     public double getWeight() {
         return _weight;
     }
 
-    private void setWeight(double pWeight) {
-        _weight = pWeight;
+    // builders
+    // by default
+    public ElectricalAppliance(){
+        setPrice(PRICE_DEFAULT);
+        setColor(COLOR_DEFAULT);
+        setEnergy(ENERGY_DEFAULT);
+        setWeight(WEIGHT_DEFAULT);
+    }
+    // price + weight only
+    public ElectricalAppliance(double pPrice, double pWeight ){
+        setPrice(pPrice);
+        setColor(COLOR_DEFAULT);
+        setEnergy(ENERGY_DEFAULT);
+        setWeight(pWeight);
+    }
+    // normal
+    public ElectricalAppliance(double pPrice, double pWeight, String pColor, char pEnergy){
+        setPrice(pPrice);
+        setColor(pColor);
+        setEnergy(pEnergy);
+        setWeight(pWeight);
     }
 
-    public char checkEnergyConsumption(char letter) {
+    public char CheckEnergyConsumption(char letter){
+
         boolean bLetterFound = false;
-        for (int iCount = 0; iCount < LETTERS.length && !bLetterFound; iCount++) {
+        for (int iCount = 0; iCount<LETTERS.length && !bLetterFound; iCount++){
             bLetterFound = letter == LETTERS[iCount];
-            if (iCount == LETTERS.length - 1) {
+            if (iCount==LETTERS.length-1){
                 letter = ENERGY_DEFAULT;
             }
         }
         return letter;
     }
+    public String CheckColor(String color){
 
-    public String checkColor(String color) {
         boolean bColorFound = false;
-        for (int iCount = 0; iCount < COLORS.length && !bColorFound; iCount++) {
+        for (int iCount = 0; iCount<COLORS.length && !bColorFound; iCount++){
             bColorFound = color.equals(COLORS[iCount]);
-            if (iCount == COLORS.length - 1) {
+            if (iCount==COLORS.length-1){
                 color = COLOR_DEFAULT;
             }
         }
         return color;
     }
 
-    public void finalPrice () {
+    public void FinalPrice(){
         switch (getEnergy()){
             case 'A':{
                 setPrice(PRICE_DEFAULT+100);
@@ -89,37 +108,10 @@ public class ElectricalAppliance {
                 setPrice(PRICE_DEFAULT+10);
             }
         }
-        if (_weight>0 && _weight<19){setPrice(_price+30);}
-        else if (_weight>20 && _weight<49){setPrice(_price+50);}
-        else if (_weight>50 && _weight<79){setPrice(_price+80);}
-        else if (_weight>80){setPrice(_price+100);}
-    }
 
-
-    //builders
-    //by default
-    public ElectricalAppliance() {
-        setPrice(PRICE_DEFAULT);
-        setColor(COLOR_DEFAULT);
-        setEnergy(ENERGY_DEFAULT);
-        setWeight(WEIGHT_DEFAULT);
+        if (getWeight()>0 && getWeight()<19){setPrice(getPrice()+30);}
+        else if (getWeight()>20 && getWeight()<49){setPrice(getPrice()+50);}
+        else if (getWeight()>50 && getWeight()<79){setPrice(getPrice()+80);}
+        else if (getWeight()>80){setPrice(getPrice()+100);}
     }
-    //price and weight
-    public ElectricalAppliance( double pPrice, double pWeight ){
-        setPrice(pPrice);
-        setColor(COLOR_DEFAULT);
-        setEnergy(ENERGY_DEFAULT);
-        setWeight(pWeight);
-
-    }
-    //normal
-    public ElectricalAppliance( double pPrice, String pColor,char pEnergy, double pWeight){
-        setPrice(pPrice);
-        setColor(pColor);
-        setEnergy(pEnergy);
-        setWeight(pWeight);
-    }
-
 }
-
-

@@ -1,7 +1,7 @@
-package GestionElectrodomesticos;
+package Challenge2.Gestion_Electrodomesticos;
 
 public class Main {
     public static void main(String[] args) {
-
+        System.out.println();
     }
 }
