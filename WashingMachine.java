@@ -8,6 +8,8 @@ public class WashingMachine extends ElectricalAppliance{
     private void setLoad(int pLoad){_load = pLoad;}
     public int getLoad(){return _load;}
 
+
+
     // default
     public WashingMachine() { // super();?
         setLoad(LOAD_DEFAULT);
@@ -23,11 +25,25 @@ public class WashingMachine extends ElectricalAppliance{
         setLoad(pLoad);
     }
 
+
     @Override
-    public void FinalPrice() {
-        super.FinalPrice();
+    public double FinalPrice(double pPrice) {
+        super.FinalPrice(pPrice);
         if (getLoad()>30){
-            setPrice(getPrice()+50);
+            pPrice += 50;
         }
+        //pPrice += PriceAddition(pPrice);
+
+        return pPrice;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s %.2f %s", "Washing Machine: " +
+                "Price:", getPrice(),
+                ", Weight: " + getWeight() +
+                ", Color: " + getColor() +
+                ", Energy Letter: " + getEnergy() +
+                " and Load: " + getLoad());
     }
 }

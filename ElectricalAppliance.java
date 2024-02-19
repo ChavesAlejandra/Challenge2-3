@@ -1,11 +1,11 @@
 package Challenge2.Gestion_Electrodomesticos;
 
 public class ElectricalAppliance {
-    private final static String[] COLORS = {"white", "black","red", "blue", "grey"};
-    private final static char[] LETTERS = {'A', 'B', 'C',  'D', 'E', 'F'};
+    protected final static String[] COLORS = {"white", "black","red", "blue", "grey"};
+    protected final static char[] LETTERS = {'A', 'B', 'C',  'D', 'E', 'F'};
 
     private final static double PRICE_DEFAULT = 100; // in €
-    private final static String COLOR_DEFAULT = "blanco";
+    private final static String COLOR_DEFAULT = "white";
     private final static char ENERGY_DEFAULT = 'F';
     private final static double WEIGHT_DEFAULT = 5; // in kg
 
@@ -59,9 +59,9 @@ public class ElectricalAppliance {
     // normal
     public ElectricalAppliance(double pPrice, double pWeight, String pColor, char pEnergy){
         setPrice(pPrice);
-        setColor(pColor);
-        setEnergy(pEnergy);
         setWeight(pWeight);
+        setColor(CheckColor(pColor));
+        setEnergy(CheckEnergyConsumption(pEnergy));
     }
 
     public char CheckEnergyConsumption(char letter){
@@ -87,31 +87,72 @@ public class ElectricalAppliance {
         return color;
     }
 
-    public void FinalPrice(){
+    public double FinalPrice(double pPrice){
+        //pPrice += PriceAddition(pPrice);
         switch (getEnergy()){
             case 'A':{
-                setPrice(PRICE_DEFAULT+100);
+                pPrice += 100;
             }
             case 'B':{
-                setPrice(PRICE_DEFAULT+80);
+                pPrice += 80;
             }
             case 'C':{
-                setPrice(PRICE_DEFAULT+60);
+                pPrice += 60;
             }
             case 'D':{
-                setPrice(PRICE_DEFAULT+50);
+                pPrice += 50;
             }
             case 'E':{
-                setPrice(PRICE_DEFAULT+30);
+                pPrice += 30;
             }
             case 'F':{
-                setPrice(PRICE_DEFAULT+10);
+                pPrice += 10;
             }
         }
 
-        if (getWeight()>0 && getWeight()<19){setPrice(getPrice()+30);}
-        else if (getWeight()>20 && getWeight()<49){setPrice(getPrice()+50);}
-        else if (getWeight()>50 && getWeight()<79){setPrice(getPrice()+80);}
-        else if (getWeight()>80){setPrice(getPrice()+100);}
+        if (getWeight()>0 && getWeight()<19){pPrice += 30;}
+        else if (getWeight()>20 && getWeight()<49){pPrice += 50;}
+        else if (getWeight()>50 && getWeight()<79){pPrice += 80;}
+        else if (getWeight()>80){pPrice += 100;}
+        return pPrice;
+    }
+
+    public double PriceAddition(double pPrice){
+        switch (getEnergy()){
+            case 'A':{
+                pPrice += 100;
+            }
+            case 'B':{
+                pPrice += 80;
+            }
+            case 'C':{
+                pPrice += 60;
+            }
+            case 'D':{
+                pPrice += 50;
+            }
+            case 'E':{
+                pPrice += 30;
+            }
+            case 'F':{
+                pPrice += 10;
+            }
+        }
+
+        if (getWeight()>0 && getWeight()<19){pPrice += 30;}
+        else if (getWeight()>20 && getWeight()<49){pPrice += 50;}
+        else if (getWeight()>50 && getWeight()<79){pPrice += 80;}
+        else if (getWeight()>80){pPrice += 100;}
+
+        return pPrice;
+    }
+
+    @Override
+    public String toString() {
+        return "Electrical Appliance: " +
+                "Price: " + getPrice() +
+                ", Weight: " + getWeight() +
+                ", Color: " + getColor() +
+                " and Energy Letter: " + getEnergy();
     }
 }

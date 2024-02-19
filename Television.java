@@ -12,6 +12,8 @@ public class Television extends ElectricalAppliance {
     private void setTdt(boolean pTdt){_tdt = pTdt;}
     public boolean getTdt(){return _tdt;}
 
+
+
     // builders
     // by default
     public Television(){}
@@ -22,7 +24,7 @@ public class Television extends ElectricalAppliance {
         setTdt(TDT_DEFAULT);
     }
     // normal
-    public Television(double pPrice, String pColor, char pEnergy, double pWeight, int pInches, boolean pTdt){
+    public Television(double pPrice, double pWeight, String pColor, char pEnergy, int pInches, boolean pTdt){
         super(pPrice, pWeight, pColor, pEnergy);
         setInches(pInches);
         setTdt(pTdt);
@@ -30,13 +32,27 @@ public class Television extends ElectricalAppliance {
 
 
     @Override
-    public void FinalPrice() {
-        super.FinalPrice();
-        if (_tdt){
-            setPrice(getPrice()+50);
+    public double FinalPrice(double pPrice) {
+        super.FinalPrice(pPrice);
+        if (getInches()>40){
+            pPrice *= 1.3;
         }
-        if (_inches>40){
-            setPrice(getPrice()*1.3);
+        if (getTdt()){
+            pPrice += 50;
         }
+        //pPrice = PriceAddition(pPrice);
+
+        return pPrice;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s %.2f %s", "Television: " +
+                "Price:", getPrice(),
+                ", Weight: " + getWeight() +
+                ", Color: " + getColor() +
+                ", Energy Letter: " + getEnergy() +
+                ", Inches: " + getInches() +
+                " and TDT: " + getTdt());
     }
 }
