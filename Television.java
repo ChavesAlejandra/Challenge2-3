@@ -1,7 +1,5 @@
 package Challenge2.Gestion_Electrodomesticos;
 
-import Challenge2.Gestion_Electrodomesticos.ElectricalAppliance;
-
 public class Television extends ElectricalAppliance {
     private final static int INCHES_DEFAULT = 20; // in inches
     private final static boolean TDT_DEFAULT = false; // in inches
