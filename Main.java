@@ -1,7 +1,5 @@
 package Challenge2.Gestion_Electrodomesticos;
 
-import Challenge2.Gestion_Electrodomesticos.ElectricalAppliance;
-
 public class Main {
     public static void main(String[] args) {
         ElectricalAppliance[] mainElectricalApplianceArray = new ElectricalAppliance[10];
