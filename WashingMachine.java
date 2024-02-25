@@ -1,7 +1,5 @@
 package Challenge2.Gestion_Electrodomesticos;
 
-import Challenge2.Gestion_Electrodomesticos.ElectricalAppliance;
-
 public class WashingMachine extends ElectricalAppliance {
 
     private final static int LOAD_DEFAULT = 5; // in kg
