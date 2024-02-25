@@ -1,5 +1,7 @@
 package Challenge2.Gestion_Electrodomesticos;
 
+import Challenge2.Gestion_Electrodomesticos.ElectricalAppliance;
+
 public class Main {
     public static void main(String[] args) {
         ElectricalAppliance[] mainElectricalApplianceArray = new ElectricalAppliance[10];
@@ -16,11 +18,21 @@ public class Main {
         mainElectricalApplianceArray[8] = new Television(599.99, 6); // price + weight only
         mainElectricalApplianceArray[9] = new Television(2499.99, 11, "black", 'C', 65, true); // normal
 
+        double iTotalPriceEA = 0;
+        double iTotalPriceWM = 0;
+        double iTotalPriceT = 0;
         for (int iCount = 0; iCount<10; iCount++) {
-            System.out.println(mainElectricalApplianceArray[iCount]);
-
+            if (mainElectricalApplianceArray[iCount].getClass().equals(ElectricalAppliance.class)) {
+                iTotalPriceEA += mainElectricalApplianceArray[iCount].FinalPrice(mainElectricalApplianceArray[iCount].getPrice());
+            } else if (mainElectricalApplianceArray[iCount].getClass().equals(WashingMachine.class)) {
+                iTotalPriceWM += mainElectricalApplianceArray[iCount].FinalPrice(mainElectricalApplianceArray[iCount].getPrice());
+            } else if (mainElectricalApplianceArray[iCount].getClass().equals(Television.class)) {
+                iTotalPriceT += mainElectricalApplianceArray[iCount].FinalPrice(mainElectricalApplianceArray[iCount].getPrice());
+            }
         }
+        System.out.println("The Total Price of Challenge2.Gestion_Electrodomesticos.ElectricalAppliance: " + iTotalPriceEA);
+        System.out.println("The Total Price of Challenge2.Gestion_Electrodomesticos.WashingMachine: " + iTotalPriceWM);
+        System.out.println("The Total Price of Challenge2.Gestion_Electrodomesticos.Television: " + iTotalPriceT);
 
-        System.out.println();
     }
 }

@@ -1,5 +1,7 @@
 package Challenge2.Gestion_Electrodomesticos;
 
+import Challenge2.Gestion_Electrodomesticos.ElectricalAppliance;
+
 public class Television extends ElectricalAppliance {
     private final static int INCHES_DEFAULT = 20; // in inches
     private final static boolean TDT_DEFAULT = false; // in inches
@@ -33,26 +35,24 @@ public class Television extends ElectricalAppliance {
 
     @Override
     public double FinalPrice(double pPrice) {
-        super.FinalPrice(pPrice);
+        pPrice = super.FinalPrice(pPrice);
         if (getInches()>40){
             pPrice *= 1.3;
         }
         if (getTdt()){
             pPrice += 50;
         }
-        //pPrice = PriceAddition(pPrice);
-
         return pPrice;
     }
 
     @Override
     public String toString() {
-        return String.format("%s %.2f %s", "Television: " +
-                "Price:", getPrice(),
+        return String.format("%s %.2f %s", "Challenge2.Gestion_Electrodomesticos.Television: " +
+                        "Price:", getPrice(),
                 ", Weight: " + getWeight() +
-                ", Color: " + getColor() +
-                ", Energy Letter: " + getEnergy() +
-                ", Inches: " + getInches() +
-                " and TDT: " + getTdt());
+                        ", Color: " + getColor() +
+                        ", Energy Letter: " + getEnergy() +
+                        ", Inches: " + getInches() +
+                        " and TDT: " + getTdt());
     }
 }

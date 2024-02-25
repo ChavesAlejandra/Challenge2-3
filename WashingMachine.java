@@ -1,6 +1,8 @@
 package Challenge2.Gestion_Electrodomesticos;
 
-public class WashingMachine extends ElectricalAppliance{
+import Challenge2.Gestion_Electrodomesticos.ElectricalAppliance;
+
+public class WashingMachine extends ElectricalAppliance {
 
     private final static int LOAD_DEFAULT = 5; // in kg
 
@@ -11,9 +13,10 @@ public class WashingMachine extends ElectricalAppliance{
 
 
     // default
-    public WashingMachine() { // super();?
+    public WashingMachine() {
         setLoad(LOAD_DEFAULT);
     }
+
     // price + weight only
     public WashingMachine(double pPrice, double pWeight){
         super(pPrice, pWeight);
@@ -28,11 +31,10 @@ public class WashingMachine extends ElectricalAppliance{
 
     @Override
     public double FinalPrice(double pPrice) {
-        super.FinalPrice(pPrice);
+        pPrice = super.FinalPrice(pPrice);
         if (getLoad()>30){
             pPrice += 50;
         }
-        //pPrice += PriceAddition(pPrice);
 
         return pPrice;
     }
@@ -40,10 +42,10 @@ public class WashingMachine extends ElectricalAppliance{
     @Override
     public String toString() {
         return String.format("%s %.2f %s", "Washing Machine: " +
-                "Price:", getPrice(),
+                        "Price:", getPrice(),
                 ", Weight: " + getWeight() +
-                ", Color: " + getColor() +
-                ", Energy Letter: " + getEnergy() +
-                " and Load: " + getLoad());
+                        ", Color: " + getColor() +
+                        ", Energy Letter: " + getEnergy() +
+                        " and Load: " + getLoad());
     }
 }

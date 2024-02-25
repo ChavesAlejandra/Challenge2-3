@@ -1,6 +1,6 @@
 package Challenge2.Gestion_Electrodomesticos;
 
-public class ElectricalAppliance {
+public class ElectricalAppliance implements IPrice {
     protected final static String[] COLORS = {"white", "black","red", "blue", "grey"};
     protected final static char[] LETTERS = {'A', 'B', 'C',  'D', 'E', 'F'};
 
@@ -88,25 +88,30 @@ public class ElectricalAppliance {
     }
 
     public double FinalPrice(double pPrice){
-        //pPrice += PriceAddition(pPrice);
         switch (getEnergy()){
             case 'A':{
                 pPrice += 100;
+                break;
             }
             case 'B':{
                 pPrice += 80;
+                break;
             }
             case 'C':{
                 pPrice += 60;
+                break;
             }
             case 'D':{
                 pPrice += 50;
+                break;
             }
             case 'E':{
                 pPrice += 30;
+                break;
             }
             case 'F':{
                 pPrice += 10;
+                break;
             }
         }
 
@@ -114,36 +119,6 @@ public class ElectricalAppliance {
         else if (getWeight()>20 && getWeight()<49){pPrice += 50;}
         else if (getWeight()>50 && getWeight()<79){pPrice += 80;}
         else if (getWeight()>80){pPrice += 100;}
-        return pPrice;
-    }
-
-    public double PriceAddition(double pPrice){
-        switch (getEnergy()){
-            case 'A':{
-                pPrice += 100;
-            }
-            case 'B':{
-                pPrice += 80;
-            }
-            case 'C':{
-                pPrice += 60;
-            }
-            case 'D':{
-                pPrice += 50;
-            }
-            case 'E':{
-                pPrice += 30;
-            }
-            case 'F':{
-                pPrice += 10;
-            }
-        }
-
-        if (getWeight()>0 && getWeight()<19){pPrice += 30;}
-        else if (getWeight()>20 && getWeight()<49){pPrice += 50;}
-        else if (getWeight()>50 && getWeight()<79){pPrice += 80;}
-        else if (getWeight()>80){pPrice += 100;}
-
         return pPrice;
     }
 
